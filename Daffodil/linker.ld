@@ -4,7 +4,7 @@ SECTIONS
 {
     . = 2M;
 
-    .boot :
+    .multiboot :
     {
         *(.multiboot_header)
     }
@@ -26,4 +26,9 @@ SECTIONS
         *(COMMON)
         . = ALIGN(4096);
     }
+
+    . = ALIGN(16);
+    stack_bottom = .;
+    . += 0x2000;
+    stack_top = .;
 }
